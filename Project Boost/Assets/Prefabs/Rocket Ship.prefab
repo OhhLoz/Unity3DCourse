@@ -185,7 +185,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 4384ce4d72366274797e0cd31ad26d9b, type: 2}
+  - {fileID: 2100000, guid: 5c86ddb76cd92ee498cb833f9a8365f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -255,7 +255,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 4384ce4d72366274797e0cd31ad26d9b, type: 2}
+  - {fileID: 2100000, guid: 5c86ddb76cd92ee498cb833f9a8365f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -346,12 +346,12 @@ Rigidbody:
   m_GameObject: {fileID: 1367887601384758}
   serializedVersion: 2
   m_Mass: 0.1
-  m_Drag: 0
+  m_Drag: 0.2
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 56
   m_CollisionDetection: 0
 --- !u!65 &65716543641281490
 BoxCollider:
@@ -386,11 +386,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 8896ba1a0d9700d48b1028453e686eae, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.8
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -483,7 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff88bf38cad8a048a63c4dbc818aa03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rocketThrustVelocity: 50
+  rocketThrustVelocity: 60
   rocketRotationVelocity: 75
 --- !u!135 &135132730939826418
 SphereCollider:

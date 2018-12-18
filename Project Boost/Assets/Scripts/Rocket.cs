@@ -18,11 +18,26 @@ public class Rocket : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		ProcessInput();
+		Rotate();
+		Thrust();
 	}
 
-	private void ProcessInput()
+	private void Rotate()
 	{
+		if(Input.GetKey(KeyCode.A))
+		{
+			transform.Rotate(Vector3.forward * rocketRotationVelocity * Time.deltaTime);
+		}
+		else if (Input.GetKey(KeyCode.D))
+		{
+			transform.Rotate(Vector3.back * rocketRotationVelocity * Time.deltaTime);
+		}
+	}
+
+	private void Thrust()
+	{
+		rocketRigidBody.freezeRotation = true;
+
 		if(Input.GetKey(KeyCode.W))
 		{
 			rocketRigidBody.AddRelativeForce(Vector3.up * rocketThrustVelocity * Time.deltaTime);
@@ -32,13 +47,6 @@ public class Rocket : MonoBehaviour
 		else
 			rocketThrust.Stop();
 
-		if(Input.GetKey(KeyCode.A))
-		{
-			transform.Rotate(Vector3.forward * rocketRotationVelocity * Time.deltaTime);
-		}
-		else if (Input.GetKey(KeyCode.D))
-		{
-			transform.Rotate(Vector3.back * rocketRotationVelocity * Time.deltaTime);
-		}
+		rocketRigidBody.freezeRotation = false;
 	}
 }
