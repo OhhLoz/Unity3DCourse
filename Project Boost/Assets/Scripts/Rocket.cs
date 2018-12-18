@@ -6,7 +6,8 @@ public class Rocket : MonoBehaviour
 {
 
 	Rigidbody rocketRigidBody;
-	[SerializeField] float rocketVelocity = 2f;
+	[SerializeField] float rocketThrustVelocity = 2f;
+	[SerializeField] float rocketRotationVelocity = 2f;
 	// Use this for initialization
 	void Start()
 	{
@@ -23,16 +24,16 @@ public class Rocket : MonoBehaviour
 	{
 		if(Input.GetKey(KeyCode.W))
 		{
-			rocketRigidBody.AddRelativeForce(Vector3.up);
+			rocketRigidBody.AddRelativeForce(Vector3.up * rocketThrustVelocity * Time.deltaTime);
 		}
 
 		if(Input.GetKey(KeyCode.A))
 		{
-			print("Rotating Left");
+			transform.Rotate(Vector3.forward * rocketRotationVelocity * Time.deltaTime);
 		}
 		else if (Input.GetKey(KeyCode.D))
 		{
-			print("Rotating Right");
+			transform.Rotate(Vector3.back * rocketRotationVelocity * Time.deltaTime);
 		}
 	}
 }
