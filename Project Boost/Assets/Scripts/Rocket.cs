@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
+
+	Rigidbody rocketRigidBody;
+	[SerializeField] float rocketVelocity = 2f;
 	// Use this for initialization
 	void Start()
 	{
-
+		rocketRigidBody = GetComponent<Rigidbody>();
 	}
 
 	// Update is called once per frame
@@ -20,7 +23,7 @@ public class Rocket : MonoBehaviour
 	{
 		if(Input.GetKey(KeyCode.W))
 		{
-			print("Thrusting");
+			rocketRigidBody.AddRelativeForce(Vector3.up);
 		}
 
 		if(Input.GetKey(KeyCode.A))
