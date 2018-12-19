@@ -8,6 +8,7 @@ public class Rocket : MonoBehaviour
 	AudioSource rocketThrust;
 	[SerializeField] float rocketThrustVelocity = 2f;
 	[SerializeField] float rocketRotationVelocity = 2f;
+
 	// Use this for initialization
 	void Start()
 	{
