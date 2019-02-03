@@ -386,7 +386,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8896ba1a0d9700d48b1028453e686eae, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.8
   m_Pitch: 1
@@ -485,6 +485,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rocketThrustVelocity: 750
   rocketRotationVelocity: 150
+  levelChangeDelay: 1
+  thrustSound: {fileID: 8300000, guid: d3a5531e4cd4beb4a82965f151fa1079, type: 3}
+  deathSound: {fileID: 8300000, guid: 6e62bbd8740787d429cbf8e33de8dd77, type: 3}
+  winSound: {fileID: 8300000, guid: 8504a0f518fcc4d48b896c6eda61ed7b, type: 3}
 --- !u!135 &135132730939826418
 SphereCollider:
   m_ObjectHideFlags: 1

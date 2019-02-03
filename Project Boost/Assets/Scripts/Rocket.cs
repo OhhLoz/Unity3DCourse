@@ -10,6 +10,9 @@ public class Rocket : MonoBehaviour
 	[SerializeField] float rocketThrustVelocity = 2f;
 	[SerializeField] float rocketRotationVelocity = 2f;
 	[SerializeField] float levelChangeDelay = 1f;
+	[SerializeField] AudioClip thrustSound;
+	[SerializeField] AudioClip deathSound;
+	[SerializeField] AudioClip winSound;
 
 	enum State { Alive, Dying, Transcending }
 	State state = State.Alive;
@@ -26,12 +29,12 @@ public class Rocket : MonoBehaviour
 	{
 		if(state == State.Alive)
 		{
-			Rotate();
-			Thrust();
+			HandleRotateInput();
+			HandleThrustInput();
 		}
 	}
 
-	private void Rotate()
+	private void HandleRotateInput()
 	{
 		if(Input.GetKey(KeyCode.A))
 		{
@@ -43,7 +46,7 @@ public class Rocket : MonoBehaviour
 		}
 	}
 
-	private void Thrust()
+	private void HandleThrustInput()
 	{
 		rocketRigidBody.freezeRotation = true;
 
@@ -51,7 +54,7 @@ public class Rocket : MonoBehaviour
 		{
 			rocketRigidBody.AddRelativeForce(Vector3.up * rocketThrustVelocity * Time.deltaTime);
 			if(!rocketThrust.isPlaying)
-				rocketThrust.Play();
+				rocketThrust.PlayOneShot(thrustSound);
 		}
 		else
 			rocketThrust.Stop();
@@ -73,11 +76,15 @@ public class Rocket : MonoBehaviour
 				break;
 			case "Finish":
 				print("Finish");
+				rocketThrust.Stop();
+				rocketThrust.PlayOneShot(winSound);
 				state = State.Transcending;
 				Invoke("LoadNextScene", levelChangeDelay);
 				break;
 			default:
 				print("Dead");
+				rocketThrust.Stop();
+				rocketThrust.PlayOneShot(deathSound);
 				state = State.Dying;
 				Invoke("LoadFirstScene", levelChangeDelay);
 				break;
