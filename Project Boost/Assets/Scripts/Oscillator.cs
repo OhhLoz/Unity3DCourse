@@ -6,10 +6,10 @@ using UnityEngine;
 public class Oscillator : MonoBehaviour
 {
 	[SerializeField] Vector3 movementVector = new Vector3(10f,10f,10f); //Done to avoid bugs in future, can easily see if object is moving
-	[Range(0,1)][SerializeField] float movementFactor;
 	[SerializeField] float timeperiod = 2f;
 
 	Vector3 startPos;
+	float movementFactor;
 
 	void Start()
 	{
@@ -19,7 +19,9 @@ public class Oscillator : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		float cycles = Time.time / timeperiod;
+		float cycles = 0;
+		if (timeperiod >= Mathf.Epsilon)
+			cycles = Time.time / timeperiod;
 		const float tau = Mathf.PI * 2;
 		float rawSine = Mathf.Sin(cycles * tau); // Varies between -1 and 1
 
